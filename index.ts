@@ -6,6 +6,8 @@ import allSettled from "promise-all-settled";
 import {ILoggerPayload} from "./interfaces/ILoggerPayload";
 import {LogWeight} from "./constants/LogWeight";
 
+export {Console} from "./Console";
+
 export class Logger {
     private readonly channels: ILoggerChannel[];
     private level;
