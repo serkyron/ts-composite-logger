@@ -1,10 +1,10 @@
 import {ILogMessage} from "./interfaces/ILogMessage";
 import {LogLevel} from "./constants/LogLevel";
 import {ILoggerChannel} from "./interfaces/ILoggerChannel";
-import {dateFormat} from "dateformat";
+import * as format from "date-format";
 
 export class Console implements ILoggerChannel {
-    private format: string = "HH:MM:SS.l";
+    private format: string = "hh:mm:ss.SSS";
 
     public setFormat(format: string) {
         this.format = format;
@@ -12,7 +12,7 @@ export class Console implements ILoggerChannel {
 
     public async write(message: ILogMessage) {
         const date = new Date(message.timestamp * 1000);
-        const timeStr = dateFormat(date, this.format);
+        const timeStr = format.asString(this.format, date);
 
         let level = message.level;
 

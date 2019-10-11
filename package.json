@@ -1,6 +1,6 @@
 {
   "name": "ts-composite-logger",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Logger written in typescript. Includes a console channel by default. Allows to add other log channels by extending ILogChannel interface.",
   "main": "dist/index.js",
   "types": [
@@ -37,7 +37,7 @@
     "typescript-mix": "^3.1.3"
   },
   "dependencies": {
-    "dateformat": "^3.0.3",
+    "date-format": "^2.1.0",
     "promise-all-settled": "^1.1.0"
   }
 }

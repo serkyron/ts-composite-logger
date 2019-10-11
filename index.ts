@@ -5,6 +5,7 @@ import {ILogMessage} from "./interfaces/ILogMessage";
 import allSettled from "promise-all-settled";
 import {ILoggerPayload} from "./interfaces/ILoggerPayload";
 import {Console} from "./Console";
+import {LogWeight} from "./constants/LogWeight";
 
 export class Logger {
     private readonly channels: ILoggerChannel[];
@@ -103,6 +104,10 @@ export class Logger {
     }
 
     private async write(object: ILogMessage) {
+        if (LogWeight[object.level] < LogWeight[this.level]) {
+            return;
+        }
+
         const tasks = [];
 
         for (const channel of this.channels) {
