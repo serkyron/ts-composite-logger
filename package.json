@@ -1,10 +1,14 @@
 {
-  "name": "logger",
+  "name": "ts-composite-logger",
   "version": "1.0.0",
-  "description": "Logger facade written in typescript. Includes a console logger by default. Allows to add other loggers by extending its interface.",
-  "main": "index.ts",
+  "description": "Logger written in typescript. Includes a console channel by default. Allows to add other log channels by extending ILogChannel interface.",
+  "main": "dist/index.js",
+  "types": [
+    "dist/*.d.ts"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node_modules/.bin/tsc"
   },
   "repository": {
     "type": "git",
@@ -22,7 +26,15 @@
   },
   "homepage": "https://github.com/serkyron/logger#readme",
   "devDependencies": {
-    "@types/node": "^12.7.12"
+    "@types/node": "^12.7.12",
+    "tslint": "^5.19.0",
+    "typescript": "^3.6.2",
+    "@babel/core": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.2",
+    "babel-preset-stage-2": "^6.24.1",
+    "typescript-mix": "^3.1.3"
   },
   "dependencies": {
     "dateformat": "^3.0.3",
