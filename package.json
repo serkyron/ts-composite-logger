@@ -25,6 +25,7 @@
     "@types/node": "^12.7.12"
   },
   "dependencies": {
+    "dateformat": "^3.0.3",
     "promise-all-settled": "^1.1.0"
   }
 }
