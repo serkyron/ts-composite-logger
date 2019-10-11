@@ -5,17 +5,16 @@
     
   ## Basic usage  
     
-  
-      import {Logger, Console, LogLevel} from "ts-composite-logger";
+  	import {Logger, Console, LogLevel} from "ts-composite-logger";
       
-      const console = new Console();  
+  	const console = new Console();  
   	console.setFormat("hh:mm:ss.SSS"); // this is default
   	
   	global.logger = (new Logger())
-  		.addChannel(console)
-  		.setLevel(LogLevel.INFO);
+		.addChannel(console)
+		.setLevel(LogLevel.INFO);
   		
-      global.logger.info("VM connected");
+  	global.logger.info("VM connected");
   
   *Available log levels:*
   
