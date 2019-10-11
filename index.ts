@@ -21,26 +21,29 @@ export class Logger {
         this.channels = [];
     }
 
-    public addChannel(channel: ILoggerChannel): void {
+    public addChannel(channel: ILoggerChannel): Logger {
         this.channels.push(channel);
+        return this;
     }
 
-    public removeChannel(name: string): ILoggerChannel[] {
+    public removeChannel(name: string): Logger {
         for (const i in this.channels) {
             if (this.channels[i].constructor.name === name) {
-                return this.channels.splice(parseInt(i), 1);
+                this.channels.splice(parseInt(i), 1);
+                return this;
             }
         }
 
         throw new Error(`Failed to remove channel: ${name}`)
     }
 
-    public setLevel(level: string): void {
+    public setLevel(level: string): Logger {
         if (!Object.values(LogLevel).includes(level)) {
             throw new Error(`Unexpected log level: ${level}`);
         }
 
         this.level = level;
+        return this;
     }
 
     public async error(message: string, code: number = LogCode.GENERAL_ERROR, object: ILoggerPayload = {}) {
