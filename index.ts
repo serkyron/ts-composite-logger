@@ -7,6 +7,10 @@ import {ILoggerPayload} from "./interfaces/ILoggerPayload";
 import {LogWeight} from "./constants/LogWeight";
 
 export {Console} from "./Console";
+export {LogLevel} from "./constants/LogLevel";
+export {ILoggerChannel} from "./interfaces/ILoggerChannel";
+export {ILoggerPayload} from "./interfaces/ILoggerPayload";
+export {ILogMessage} from "./interfaces/ILogMessage";
 
 export class Logger {
     private readonly channels: ILoggerChannel[];
