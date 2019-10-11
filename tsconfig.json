@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es6",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "outDir": "dist",
+    "baseUrl": "./src",
+    "paths": {
+    }
+  },
+  "lib": [
+    "es2017",
+    "dom"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "assets"
+  ]
+}

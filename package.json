@@ -1,0 +1,30 @@
+{
+  "name": "logger",
+  "version": "1.0.0",
+  "description": "Logger facade written in typescript. Includes a console logger by default. Allows to add other loggers by extending its interface.",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/serkyron/logger.git"
+  },
+  "keywords": [
+    "typescript",
+    "logger",
+    "console"
+  ],
+  "author": "serkyron",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/serkyron/logger/issues"
+  },
+  "homepage": "https://github.com/serkyron/logger#readme",
+  "devDependencies": {
+    "@types/node": "^12.7.12"
+  },
+  "dependencies": {
+    "promise-all-settled": "^1.1.0"
+  }
+}
