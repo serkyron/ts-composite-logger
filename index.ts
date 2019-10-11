@@ -4,7 +4,6 @@ import {LogLevel} from "./constants/LogLevel";
 import {ILogMessage} from "./interfaces/ILogMessage";
 import allSettled from "promise-all-settled";
 import {ILoggerPayload} from "./interfaces/ILoggerPayload";
-import {Console} from "./Console";
 import {LogWeight} from "./constants/LogWeight";
 
 export class Logger {
@@ -13,7 +12,7 @@ export class Logger {
 
     constructor() {
         this.level = LogLevel.DEBUG;
-        this.channels = [new Console()];
+        this.channels = [];
     }
 
     public addChannel(channel: ILoggerChannel): void {
