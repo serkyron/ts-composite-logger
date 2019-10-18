@@ -1,9 +1,9 @@
-  # Composite logger  
+# Composite logger  
   Use this package in your applications for logging. Out of the box the package outputs logs to console. You can create more custom channels and send data to them as well, dynamically add and remove them. The advantage of this logger is that it's easy to extend it.  
     
   **npm install -S ts-composite-logger**  
     
-  ## Basic usage  
+## Basic usage  
     
   	import {Logger, Console, LogLevel} from "ts-composite-logger";
       
@@ -26,7 +26,7 @@
   
   > By default **debug** log level is selected. Which means that every log reqest will be fullfilled.
   
-  ##  Date format options for console channel
+##  Date format options for console channel
   Format string can be anything, but the following letters will be replaced (and leading zeroes added if necessary):
   
   -   dd -  `date.getDate()`
