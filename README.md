@@ -5,14 +5,14 @@
     
 ## Basic usage  
     
-  	import {Logger, Console, LogLevel} from "ts-composite-logger";
+	import {Logger, Console, LogLevel} from "ts-composite-logger";
       
   	const console = new Console();  
   	console.setFormat("hh:mm:ss.SSS"); // this is default
   	
   	global.logger = (new Logger())
-		.addChannel(console)
-		.setLevel(LogLevel.INFO);
+      .addChannel(console)
+      .setLevel(LogLevel.INFO);
   		
   	global.logger.info("VM connected");
   
@@ -53,17 +53,17 @@ Create a class that implements _ILoggerChannel_ interface.
 	import {ILoggerChannel} from "ts-composite-logger";
 	import {ILogMessage} from "ts-composite-logger";
 
-	export class MongoDB implements ILoggerChannel {
-   	  private readonly connectUrl: string;
+    export class MongoDB implements ILoggerChannel {
+      private readonly connectUrl: string;
       private readonly dbName: string;
       private readonly collectionName: string;
       private client;
 
-	  constructor(url: string, db: string, collection: string) {
-		this.connectUrl = url;
-		this.dbName = db;
-		this.collectionName = collection;
-	  }
+    constructor(url: string, db: string, collection: string) {
+      this.connectUrl = url;
+      this.dbName = db;
+      this.collectionName = collection;
+    }
 
       public async write(message: ILogMessage) {
         if (!this.client) {
