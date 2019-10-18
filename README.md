@@ -5,16 +5,16 @@
     
 ## Basic usage  
     
-	import {Logger, Console, LogLevel} from "ts-composite-logger";
+    import {Logger, Console, LogLevel} from "ts-composite-logger";
       
-  	const console = new Console();  
-  	console.setFormat("hh:mm:ss.SSS"); // this is default
+    const console = new Console();  
+    console.setFormat("hh:mm:ss.SSS"); // this is default
   	
-  	global.logger = (new Logger())
+    global.logger = (new Logger())
       .addChannel(console)
       .setLevel(LogLevel.INFO);
   		
-  	global.logger.info("VM connected");
+    global.logger.info("VM connected");
   
   *Available log levels:*
   
@@ -48,10 +48,10 @@ The implementation can be found [here](https://www.npmjs.com/package/ts-mongodb-
 
 Create a class that implements _ILoggerChannel_ interface.
 
-	import assert from "assert";
-	import {MongoClient} from "mongodb";
-	import {ILoggerChannel} from "ts-composite-logger";
-	import {ILogMessage} from "ts-composite-logger";
+    import assert from "assert";
+    import {MongoClient} from "mongodb";
+    import {ILoggerChannel} from "ts-composite-logger";
+    import {ILogMessage} from "ts-composite-logger";
 
     export class MongoDB implements ILoggerChannel {
       private readonly connectUrl: string;
@@ -59,11 +59,11 @@ Create a class that implements _ILoggerChannel_ interface.
       private readonly collectionName: string;
       private client;
 
-    constructor(url: string, db: string, collection: string) {
-      this.connectUrl = url;
-      this.dbName = db;
-      this.collectionName = collection;
-    }
+      constructor(url: string, db: string, collection: string) {
+        this.connectUrl = url;
+        this.dbName = db;
+        this.collectionName = collection;
+      }
 
       public async write(message: ILogMessage) {
         if (!this.client) {
@@ -89,13 +89,13 @@ Create a class that implements _ILoggerChannel_ interface.
 
       public connect(): Promise<ILoggerChannel> {
         return new Promise((resolve, reject) => {
-		  MongoClient.connect(this.connectUrl, { useNewUrlParser: true }, (err, client) => {
-		    try {
-			  assert.strictEqual(null, err);
-		    } catch (e) {
-			  return reject(e);
-		    }
-
+          MongoClient.connect(this.connectUrl, { useNewUrlParser: true }, (err, client) => {
+            try {
+              assert.strictEqual(null, err);
+            } catch (e) {
+              return reject(e);
+            }
+            
             this.client = client;
             resolve(this);
           });
