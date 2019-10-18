@@ -40,3 +40,68 @@
   -   O - timezone offset in +hm format (note that time will be in UTC if displaying offset)
   
   > The underlying package to format dates is **date-format**. You can find more details [here](https://www.npmjs.com/package/date-format)
+
+## Create you own channel
+
+This example demonstrates how to create a MongoDB channel.
+The implementation can be found [here](https://www.npmjs.com/package/ts-mongodb-logger).
+
+Create a class that implements _ILoggerChannel_ interface.
+
+	import assert from "assert";
+	import {MongoClient} from "mongodb";
+	import {ILoggerChannel} from "ts-composite-logger";
+	import {ILogMessage} from "ts-composite-logger";
+
+	export class MongoDB implements ILoggerChannel {
+   	  private readonly connectUrl: string;
+      private readonly dbName: string;
+      private readonly collectionName: string;
+      private client;
+
+	  constructor(url: string, db: string, collection: string) {
+		this.connectUrl = url;
+		this.dbName = db;
+		this.collectionName = collection;
+	  }
+
+      public async write(message: ILogMessage) {
+        if (!this.client) {
+          throw new Error("Channel not connected to DB");
+        }
+
+        const db = this.client.db(this.dbName);
+        const collection = db.collection(this.collectionName);
+        await this.insert(collection, message);
+      }
+
+      private insert(collection, message: ILogMessage) {
+        return new Promise((resolve, reject) => {
+          collection.insertOne(message, (error, result) => {
+            if (error) {
+              return reject(error);
+            }
+
+            return resolve();
+          });
+        });
+      }
+
+      public connect(): Promise<ILoggerChannel> {
+        return new Promise((resolve, reject) => {
+		  MongoClient.connect(this.connectUrl, { useNewUrlParser: true }, (err, client) => {
+		    try {
+			  assert.strictEqual(null, err);
+		    } catch (e) {
+			  return reject(e);
+		    }
+
+            this.client = client;
+            resolve(this);
+          });
+        });
+      }
+    }
+
+Now you can add an instance of this class to the composite logger by calling
+_addChannel_ method.
