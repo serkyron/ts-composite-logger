@@ -1,4 +1,4 @@
-export default {
+export const LogCode = {
     // general codes
     GENERAL_INFO: 1,
     GENERAL_WARNING: 2,

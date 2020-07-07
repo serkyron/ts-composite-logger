@@ -1,4 +1,4 @@
-import LogCode from "./constants/LogCode";
+import {LogCode} from "./constants/LogCode";
 import {ILoggerChannel} from "./interfaces/ILoggerChannel";
 import {LogLevel} from "./constants/LogLevel";
 import {ILogMessage} from "./interfaces/ILogMessage";
@@ -11,6 +11,7 @@ export {LogLevel} from "./constants/LogLevel";
 export {ILoggerChannel} from "./interfaces/ILoggerChannel";
 export {ILoggerPayload} from "./interfaces/ILoggerPayload";
 export {ILogMessage} from "./interfaces/ILogMessage";
+export {LogCode} from "./constants/LogCode";
 
 export class Logger {
     private readonly channels: ILoggerChannel[];
