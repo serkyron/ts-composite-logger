@@ -47,7 +47,7 @@ export class Logger {
         return this;
     }
 
-    public async error(message: string, code: number = LogCode.GENERAL_ERROR, object: ILoggerPayload = {}) {
+    public async error(message: string, code: number = LogCode.GENERAL_ERROR, object: any = {}) {
         const logMessage: ILogMessage = {
             message,
             level: LogLevel.ERROR,
@@ -59,7 +59,7 @@ export class Logger {
         return this.write(logMessage);
     }
 
-    public async fatal(message: string, code: number = LogCode.GENERAL_FATAL, object: ILoggerPayload = {}, callback: Function = () => {}) {
+    public async fatal(message: string, code: number = LogCode.GENERAL_FATAL, object: any = {}, callback: Function = () => {}) {
         const logMessage: ILogMessage = {
             message,
             level: LogLevel.FATAL,
@@ -72,7 +72,7 @@ export class Logger {
         return callback();
     }
 
-    public async warn(message: string, code: number = LogCode.GENERAL_WARNING, object: ILoggerPayload = {}) {
+    public async warn(message: string, code: number = LogCode.GENERAL_WARNING, object: any = {}) {
         const logMessage: ILogMessage = {
             message,
             level: LogLevel.WARNING,
@@ -84,7 +84,7 @@ export class Logger {
         return this.write(logMessage);
     }
 
-    public async info(message: string, code: number = LogCode.GENERAL_INFO, object: ILoggerPayload = {}) {
+    public async info(message: string, code: number = LogCode.GENERAL_INFO, object: any = {}) {
         const logMessage: ILogMessage = {
             message,
             level: LogLevel.INFO,
@@ -96,7 +96,7 @@ export class Logger {
         return this.write(logMessage);
     }
 
-    public async debug(message, code: number = LogCode.GENERAL_DEBUG, object: ILoggerPayload = {}) {
+    public async debug(message, code: number = LogCode.GENERAL_DEBUG, object: any = {}) {
         const logMessage: ILogMessage = {
             message,
             level: LogLevel.DEBUG,
